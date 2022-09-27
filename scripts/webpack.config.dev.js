@@ -7,12 +7,15 @@ const genConfig = ({
   entry, filename, library, libraryTarget,
 }) => ({
   ...common,
+  target: 'web',
   mode: 'development',
+  devtool: 'inline-source-map',
   entry,
   output: {
     filename,
     library,
-    libraryTarget,
+      libraryTarget,
+    path: path.resolve(__dirname, '../../InteractivePlayer')
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -37,12 +40,12 @@ const genConfig = ({
 module.exports = [
   genConfig({
     entry: path.resolve(__dirname, '..', 'src', 'index.js'),
-    filename: 'tesseract.dev.js',
+    filename: 'tesseract.min.js',
     library: 'Tesseract',
     libraryTarget: 'umd',
   }),
   genConfig({
     entry: path.resolve(__dirname, '..', 'src', 'worker-script', 'browser', 'index.js'),
-    filename: 'worker.dev.js',
+    filename: 'worker.min.js',
   }),
 ];

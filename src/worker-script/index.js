@@ -183,7 +183,7 @@ const initialize = ({
     });
     if (api !== null) {
       api.End();
-    }
+      }
     api = new TessModule.TessBaseAPI();
     api.Init(null, langs, oem);
     params = defaultParams;
